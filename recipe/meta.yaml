@@ -1,0 +1,47 @@
+{% set version = "0.15.1" %}
+
+package:
+  name: tifffile
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/t/tifffile/tifffile-{{ version }}.tar.gz
+  sha256: 1fbb2cfd57fd8e42e417bc29001a17f319701f1be00e0b8a0004a52da93f1b08
+
+build:
+    number: 0
+    script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+  host:
+    - python
+    - pip
+    - numpy
+    - msinttypes  # [win and py<36]
+  run:
+    - python
+    - {{ pin_compatible('numpy') }}
+      #    - backports.lzma  # [py27]
+      #    - futures  # [py27]
+      #    - enum34  # [py27]
+      #    - pathlib  # [py27]
+
+test:
+  imports:
+    - tifffile
+
+about:
+  home: https://github.com/blink1073/tifffile
+  license: BSD 3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: 'Read and write image data from and to TIFF files.'
+
+extra:
+  recipe-maintainers:
+    - blink1073
+    - ocefpaf
+    - jakirkham
+    - stuarteberg
