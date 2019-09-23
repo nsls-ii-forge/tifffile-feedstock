@@ -1,17 +1,19 @@
+{% set name = "tifffile" %}
 {% set version = "0.15.1" %}
+{% set sha256 = "1fbb2cfd57fd8e42e417bc29001a17f319701f1be00e0b8a0004a52da93f1b08" %}
 
 package:
-  name: tifffile
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/t/tifffile/tifffile-{{ version }}.tar.gz
-  sha256: 1fbb2cfd57fd8e42e417bc29001a17f319701f1be00e0b8a0004a52da93f1b08
+  sha256: {{ sha256 }}
 
 build:
-    number: 1
-    script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
-    skip: True  # [py<36]
+  number: 1
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
+  skip: True  # [py<36]
 
 requirements:
   build:
@@ -34,11 +36,4 @@ about:
   license: BSD 3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'Read and write image data from and to TIFF files.'
-
-extra:
-  recipe-maintainers:
-    - blink1073
-    - ocefpaf
-    - jakirkham
-    - stuarteberg
+  summary: Read and write image data from and to TIFF files
