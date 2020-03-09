@@ -1,0 +1,8 @@
+c_compiler:
+- vs2015
+channel_sources:
+- nsls2forge,defaults
+channel_targets:
+- nsls2forge main
+numpy:
+- '1.14'
