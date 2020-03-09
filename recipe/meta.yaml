@@ -1,6 +1,6 @@
 {% set name = "tifffile" %}
-{% set version = "0.15.1" %}
-{% set sha256 = "1fbb2cfd57fd8e42e417bc29001a17f319701f1be00e0b8a0004a52da93f1b08" %}
+{% set version = "2020.2.16" %}
+{% set sha256 = "f03b03c4863d232e746859ebdf36e3dfd974364d9944d884bc82b430b0d7290d" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
   skip: True  # [py<36]
 
@@ -19,13 +19,14 @@ requirements:
   build:
     - {{ compiler('c') }}
   host:
-    - python
+    - python >=3.6
     - pip
     - numpy
     - msinttypes  # [win and py<36]
   run:
-    - python
+    - python >=3.6
     - {{ pin_compatible('numpy') }}
+    - imagecodecs-lite >=2019.4.20
 
 test:
   imports:
