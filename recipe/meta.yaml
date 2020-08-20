@@ -1,6 +1,6 @@
 {% set name = "tifffile" %}
-{% set version = "0.15.1" %}
-{% set sha256 = "1fbb2cfd57fd8e42e417bc29001a17f319701f1be00e0b8a0004a52da93f1b08" %}
+{% set version = "2020.8.13" %}
+{% set sha256 = "60043e50adab5a1b9f13c3fb1a23992b9af00e1ada13d7ffe48c1ad7e0062cb8" %}
 
 package:
   name: {{ name|lower }}
@@ -11,9 +11,9 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
-  skip: True  # [py<36]
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv
+  skip: true  # [py<36]
 
 requirements:
   build:
