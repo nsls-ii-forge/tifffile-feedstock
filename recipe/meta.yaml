@@ -7,33 +7,33 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/t/tifffile/tifffile-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv
-  skip: true  # [py<36]
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  entry_points:
+    - tifffile = tifffile:main
+    - lsm2bin = tifffile.lsm2bin:main
 
 requirements:
-  build:
-    - {{ compiler('c') }}
   host:
-    - python
+    - python >=3.7
     - pip
-    - numpy
-    - msinttypes  # [win and py<36]
   run:
-    - python
-    - {{ pin_compatible('numpy') }}
+    - python >=3.7
+    - numpy >=1.15.1
+    - imagecodecs
 
 test:
   imports:
     - tifffile
 
 about:
-  home: https://github.com/blink1073/tifffile
-  license: BSD 3-Clause
+  home: https://github.com/cgohlke/tifffile
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: Read and write image data from and to TIFF files
+  summary: Read and write image data from and to TIFF files.
