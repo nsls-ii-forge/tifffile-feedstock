@@ -1,6 +1,6 @@
 {% set name = "tifffile" %}
-{% set version = "2020.9.22" %}
-{% set sha256 = "505a0ddf372697e8dacd3a8bc486f7143df44772b0fd72ca56486b6b46cbe494" %}
+{% set version = "2020.10.1" %}
+{% set sha256 = "799feeccc91965b69e1288c51a1d1118faec7f40b2eb89ad2979591b85324830" %}
 
 package:
   name: {{ name|lower }}
@@ -13,7 +13,7 @@ source:
 build:
   number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - tifffile = tifffile:main
     - lsm2bin = tifffile.lsm2bin:main
@@ -24,8 +24,8 @@ requirements:
     - pip
   run:
     - python >=3.7
-    - numpy >=1.15.1
     - imagecodecs
+    - numpy >=1.15.1
 
 test:
   imports:
