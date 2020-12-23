@@ -5,11 +5,9 @@ Home: https://github.com/cgohlke/tifffile
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/nsls-ii-forge/tifffile-feedstock/blob/master/LICENSE.txt)
 
 Summary: Read and write image data from and to TIFF files.
-
-
 
 Current build status
 ====================
